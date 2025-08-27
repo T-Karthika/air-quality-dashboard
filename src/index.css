@@ -1,13 +1,130 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Clouds container */
+.clouds {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #87cefa, #f0f8ff); /* Sky blue gradient */
+  overflow: hidden;
+  z-index: -1;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Base cloud style */
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.cloud:before,
+.cloud:after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* Cloud variations with staggered delays */
+.cloud1 {
+  width: 200px;
+  height: 60px;
+  top: 10%;
+  left: -200px;
+  animation: moveClouds 30s linear infinite;
+  animation-delay: 0s;   /* starts immediately */
+}
+.cloud1:before { width: 100px; height: 100px; top: -20px; left: 50px; }
+.cloud1:after  { width: 120px; height: 120px; top: -30px; left: 120px; }
+
+.cloud2 {
+  width: 180px;
+  height: 55px;
+  top: 30%;
+  left: -250px;
+  animation: moveClouds 20s linear infinite;
+  animation-delay: 20s;  /* delayed */
+}
+.cloud2:before { width: 90px; height: 90px; top: -25px; left: 40px; }
+.cloud2:after  { width: 110px; height: 110px; top: -35px; left: 110px; }
+
+.cloud3 {
+  width: 220px;
+  height: 70px;
+  top: 50%;
+  left: -300px;
+  animation: moveClouds 22s linear infinite;
+  animation-delay: 10s;  /* delayed more */
+}
+.cloud3:before { width: 110px; height: 110px; top: -30px; left: 60px; }
+.cloud3:after  { width: 130px; height: 130px; top: -40px; left: 130px; }
+
+.cloud4 {
+  width: 200px;
+  height: 65px;
+  top: 70%;
+  left: -350px;
+  animation: moveClouds 30s linear infinite;
+  animation-delay: 6s;  /* comes last */
+}
+.cloud4:before { width: 100px; height: 100px; top: -25px; left: 50px; }
+.cloud4:after  { width: 120px; height: 120px; top: -35px; left: 120px; }
+.cloud3 {
+  width: 220px;
+  height: 70px;
+  top: 50%;
+  left: -300px;
+  animation: moveClouds 22s linear infinite;
+  animation-delay: 10s;  /* delayed more */
+}
+.cloud3:before { width: 110px; height: 110px; top: -30px; left: 60px; }
+.cloud3:after  { width: 130px; height: 130px; top: -40px; left: 130px; }
+/* Frosted glass effect */
+.frosted {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation keyframes */
+@keyframes moveClouds {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(150vw); }
+}
+.dark-mode {
+ background: #000;   /* full black */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.9; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+/* Moon */
+.moon {
+  position: absolute;
+  top: 50px;
+  right: 80px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #fff 60%, #ddd 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px 5px rgba(255,255,200,0.6);
 }
